@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import personService from '../services/PersonService'
 
-const PersonForm = ({ persons, setPersons }) => {
+const PersonForm = ({ persons, setPersons, setErrorMessage, setSuccess }) => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
@@ -16,9 +16,17 @@ const PersonForm = ({ persons, setPersons }) => {
         personService.update(findPerson.id, { ...findPerson, number: newNumber })
           .then(response => {
             console.log('Update successful:', response)
+            setSuccess(true)
+            setErrorMessage(`Update successful: ${findPerson.name}`)
+            setTimeout(() => { setErrorMessage(null) }, 5000)
             personService.getAll().then(returnedPersons => setPersons(returnedPersons))
           })
-          .catch(error => console.error('Update failed:', error))
+          .catch(error => {
+            console.error('Update failed:', error)
+            setSuccess(false)
+            setErrorMessage(`Update failed: ${findPerson.name}`)
+            setTimeout(() => { setErrorMessage(null) }, 5000)
+          })
       }
     } else {
       const personObject = {
