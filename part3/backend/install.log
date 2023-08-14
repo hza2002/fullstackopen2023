@@ -1,0 +1,8 @@
+[15:45:00 2023-08-14] FETCHING Version 2.22.2
+[15:45:00 2023-08-14] DOWNLOADING https://github.com/spicetify/spicetify-cli/releases/download/v2.22.2/spicetify-2.22.2-darwin-arm64.tar.gz
+[15:45:03 2023-08-14] EXTRACTING /Users/ghot/.spicetify/spicetify.tar.gz
+[15:45:03 2023-08-14] SETTING EXECUTABLE PERMISSIONS TO /Users/ghot/.spicetify/spicetify
+[15:45:03 2023-08-14] REMOVING /Users/ghot/.spicetify/spicetify.tar.gz
+[15:45:03 2023-08-14] spicetify path already set in /Users/ghot/.zshrc, continuing...
+[15:45:03 2023-08-14] spicetify v2.22.2 was installed successfully to /Users/ghot/.spicetify
+[15:45:03 2023-08-14] Run 'spicetify --help' to get started
