@@ -21,21 +21,28 @@ var persons = [
   },
 ]
 
+const cors = require('cors')
 const express = require('express')
 const morgan = require('morgan')
 
 const app = express()
+
+app.use(cors())
 app.use(express.json())
+app.use(express.static('build'))
 app.use(morgan('tiny'))
 
+// Main page
 app.get('/info', (request, response) => {
   response.send(`<p>Phonebook has info for ${persons.length} people</p> <p>${new Date()}</p>`)
 })
 
+// Get all
 app.get('/api/persons', (request, response) => {
   response.json(persons)
 })
 
+// Get one person
 app.get('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)
   const person = persons.find(person => person.id === id)
@@ -43,12 +50,25 @@ app.get('/api/persons/:id', (request, response) => {
   else response.status(404).end()
 })
 
+// Update one person's number
+app.put('/api/persons/:id', (request, response) => {
+  const id = Number(request.params.id)
+  const person = persons.find(person => person.id === id)
+  if (person) {
+    person.number = request.params.number
+    response.json(person)
+  }
+  else response.status(404).end()
+})
+
+// Delete one person
 app.delete('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)
   persons = persons.filter(person => person.id !== id)
   response.status(204).end()
 })
 
+// Create new person
 app.post('/api/persons', (request, response) => {
   const generateId = () => {
     const MAX = 1000000
