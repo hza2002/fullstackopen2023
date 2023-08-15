@@ -55,7 +55,8 @@ app.put('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)
   const person = persons.find(person => person.id === id)
   if (person) {
-    person.number = request.params.number
+    persons = persons.filter(person => person.id !== id)
+    persons = persons.concat(request.body)
     response.json(person)
   }
   else response.status(404).end()
