@@ -53,11 +53,11 @@ app.get('/api/persons/:id', (request, response) => {
 // Update one person's number
 app.put('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)
-  const person = persons.find(person => person.id === id)
-  if (person) {
-    persons = persons.filter(person => person.id !== id)
-    persons = persons.concat(request.body)
-    response.json(person)
+  const updatedPerson = request.body
+  const index = persons.findIndex(person => person.id === id)
+  if (index !== -1) {
+    persons[index] = { ...persons[index], number: updatedPerson.number }
+    response.json(persons[index])
   }
   else response.status(404).end()
 })
@@ -77,7 +77,6 @@ app.post('/api/persons', (request, response) => {
     return id
   }
   const body = request.body
-
   if (!body.name || !body.number) {
     return response.status(400).json({
       error: 'content missing'
@@ -88,12 +87,10 @@ app.post('/api/persons', (request, response) => {
       error: 'name must be unique'
     })
   }
-
   const newPerson = {
     ...body,
     id: generateId(),
   }
-
   persons = persons.concat(newPerson)
   response.json(newPerson)
 })

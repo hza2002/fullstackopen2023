@@ -9,14 +9,16 @@
     "dev": "nodemon index.js",
     "build:ui": "rm -rf build && cd ../../part2/phonebook && npm run build && cp -r build ../../part3/backend",
     "deploy": "npm start",
-    "deploy:full": "npm run build:ui && npm run deploy"
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "mysql": "node mysql.js"
   },
   "author": "按点下班",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
