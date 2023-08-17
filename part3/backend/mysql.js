@@ -5,7 +5,7 @@ const mysql = require('mysql');
 if (process.argv.length < 3) {
   console.log('Please provide the password as an argument: node mysql.js <password>')
   process.exit(1)
-};
+}
 
 const con = mysql.createConnection({
   host: process.env.HOST_NAME,

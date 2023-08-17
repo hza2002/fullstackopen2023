@@ -55,7 +55,7 @@ app.get('/api/persons', (_, response) => {
       })
     .catch(
       error => {
-        response.status(500).json({ error: 'Internal server error', error });
+        response.status(500).json({ error: 'Internal server error', ...error });
       })
 })
 
@@ -74,7 +74,7 @@ app.get('/api/persons/:id', (request, response) => {
       }
     )
     .catch(error => {
-      response.status(500).json({ error: 'Internal server error', error });
+      response.status(500).json({ error: 'Internal server error', ...error });
     })
 })
 
@@ -94,7 +94,7 @@ app.put('/api/persons/:id', (request, response) => {
       }
     )
     .catch(error => {
-      response.status(500).json({ error: 'Internal server error', error });
+      response.status(500).json({ error: 'Internal server error', ...error });
     })
 })
 
@@ -107,7 +107,7 @@ app.delete('/api/persons/:id', (request, response) => {
     )
     .catch(
       error => {
-        response.status(500).json({ error: 'Internal server error', error });
+        response.status(500).json({ error: 'Internal server error', ...error });
       })
 })
 
@@ -138,7 +138,7 @@ app.post('/api/persons', (request, response) => {
     )
     .catch(
       error => {
-        response.status(500).json({ error: 'Internal server error', error });
+        response.status(500).json({ error: 'Internal server error', ...error });
       }
     )
 })

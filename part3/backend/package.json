@@ -10,7 +10,8 @@
     "build:ui": "rm -rf build && cd ../../part2/phonebook && npm run build && cp -r build ../../part3/backend",
     "deploy": "npm start",
     "deploy:full": "npm run build:ui && npm run deploy",
-    "mysql": "node mysql.js"
+    "mysql": "node mysql.js",
+    "lint": "eslint ."
   },
   "author": "按点下班",
   "license": "ISC",
@@ -22,6 +23,8 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
+    "eslint": "^8.47.0",
+    "eslint-plugin-react": "^7.33.2",
     "nodemon": "^3.0.1"
   }
 }
