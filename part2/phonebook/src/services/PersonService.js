@@ -6,7 +6,7 @@ const personService = {
     const request = axios.get(baseUrl)
     return request.then(response => response.data)
   },
-  create: async newObject => {
+  create: async (newObject) => {
     const request = axios.post(baseUrl, newObject)
     return request.then(response => response.data)
   },

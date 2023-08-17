@@ -1,6 +1,5 @@
 import personService from '../services/PersonService'
 
-
 const Persons = ({ persons, setPersons, filter, setErrorMessage, setSuccess }) => {
   const personsToShow = persons.filter(person => person.name.includes(filter))
   return (personsToShow.map(person => {

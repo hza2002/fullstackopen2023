@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mysql = require('mysql');
 
 // 参数不足
@@ -7,9 +8,9 @@ if (process.argv.length < 3) {
 };
 
 const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: process.argv[2],
+  host: process.env.HOST_NAME,
+  user: process.env.USER_NAME,
+  password: process.env.USER_PASSWORD,
 });
 
 // Connected
@@ -18,7 +19,7 @@ con.connect(function(err) {
   console.log("Connected!");
 });
 
-const databaseName = "phonebook"
+const databaseName = process.env.DATABASE_NAME
 
 // Reset Database
 con.query(`DROP DATABASE IF EXISTS ${databaseName}`, (err) => {

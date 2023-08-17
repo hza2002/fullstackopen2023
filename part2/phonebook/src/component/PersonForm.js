@@ -5,7 +5,7 @@ const PersonForm = ({ persons, setPersons, setErrorMessage, setSuccess }) => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
-  const addName = (event) => {
+  const addRecord = (event) => {
     event.preventDefault()
 
     const findPerson = persons.find(person => person.name === newName)
@@ -46,7 +46,7 @@ const PersonForm = ({ persons, setPersons, setErrorMessage, setSuccess }) => {
   const handleInputChange = (event, setStateAction) => setStateAction(event.target.value)
 
   return (
-    <form onSubmit={addName}>
+    <form onSubmit={addRecord}>
       <div>name: <input onChange={event => handleInputChange(event, setNewName)} /></div>
       <div>number: <input onChange={event => handleInputChange(event, setNewNumber)} /></div>
       <div><button type="submit">add</button></div>
